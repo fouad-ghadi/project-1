@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score, f1_score
 
 def entrainer_modele():
     # Charger les données
-    df = pd.read_csv('nouvelle_dataset_equilibrée.csv')
+    df = pd.read_csv('data/nouvelle_dataset_equilibree.csv"')
     print(f"✅ Dataset chargé : {len(df)} patients")
     print(f"   Survivants : {(df['DEATH_EVENT']==0).sum()}")
     print(f"   Décédés    : {(df['DEATH_EVENT']==1).sum()}")
