@@ -13,7 +13,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score, f1_score
 def entrainer_modele():
     # Charger les données
     df = pd.read_csv('nouvelle_dataset_equilibrée.csv')
-    print(f"✅ Dataset chargé : {len(df)} patients")
+    print(f" Dataset chargé : {len(df)} patients")
     print(f"   Survivants : {(df['DEATH_EVENT']==0).sum()}")
     print(f"   Décédés    : {(df['DEATH_EVENT']==1).sum()}")
 
@@ -38,15 +38,15 @@ def entrainer_modele():
     y_pred       = modele.predict(X_test)
     y_pred_proba = modele.predict_proba(X_test)[:, 1]
 
-    print(f"\n📊 Résultats du modèle :")
+    print(f"\n Résultats du modèle :")
     print(f"   Accuracy  : {accuracy_score(y_test, y_pred)*100:.2f}%")
     print(f"   ROC-AUC   : {roc_auc_score(y_test, y_pred_proba):.4f}")
     print(f"   F1-Score  : {f1_score(y_test, y_pred):.4f}")
 
     # Sauvegarder le modèle
-    os.makedirs('models', exist_ok=True)
-    joblib.dump(modele, 'models/random_forest.pkl')
-    print(f"\n💾 Modèle sauvegardé : models/random_forest.pkl")
+    os.makedirs('scr', exist_ok=True)
+    joblib.dump(modele, 'scr/random_forest.pkl')
+    print(f"\n Modèle sauvegardé : scr/random_forest.pkl")
 
     return modele
 
@@ -73,12 +73,12 @@ def prediction(age, anaemia, creatinine_phosphokinase, diabetes,
     probabilites       = modele.predict_proba(patient)[0]
     pourcentage_risque = round(probabilites[1] * 100, 2)
 
-    if pourcentage_risque >= 70:   diagnostic = "⚠️  RISQUE ÉLEVÉ"
-    elif pourcentage_risque >= 40: diagnostic = "⚡ RISQUE MODÉRÉ"
-    else:                          diagnostic = "✅ FAIBLE RISQUE"
+    if pourcentage_risque >= 70:   diagnostic = "  RISQUE ÉLEVÉ"
+    elif pourcentage_risque >= 40: diagnostic = " RISQUE MODÉRÉ"
+    else:                          diagnostic = " FAIBLE RISQUE"
 
     print(f"\n{'═'*45}")
-    print(f"  🫀 RÉSULTAT DE PRÉDICTION")
+    print(f"   RÉSULTAT DE PRÉDICTION")
     print(f"{'═'*45}")
     print(f"  Probabilité de survie       : {round(probabilites[0]*100, 2)}%")
     print(f"  Probabilité d'insuffisance  : {pourcentage_risque}%")
@@ -103,11 +103,11 @@ if __name__ == "__main__":
     print("  EXEMPLES DE PRÉDICTIONS")
     print("=" * 45)
 
-    print("\n👤 Patient 1 — Profil critique")
+    print("\n Patient 1 — Profil critique")
     prediction(65, 0, 160, 1, 20, 0, 327000, 2.7, 116, 0, 0, 8)
 
-    print("\n👤 Patient 2 — Profil sain")
+    print("\n Patient 2 — Profil sain")
     prediction(45, 0, 582, 0, 38, 0, 265000, 1.1, 136, 1, 0, 60)
 
-    print("\n👤 Patient 3 — Profil très critique")
+    print("\n Patient 3 — Profil très critique")
     prediction(80, 1, 123, 0, 35, 1, 388000, 9.4, 133, 1, 1, 10)
