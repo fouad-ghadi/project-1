@@ -84,7 +84,7 @@ label {{ color: #94a3b8 !important; font-size: 0.8rem !important; }}
 # ── Train model ─────────────────────────────────────────────────────────────────
 @st.cache_resource
 def train_model():
-    base = os.path.dirname(os.path.abspath(__file__))
+    base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     candidates = [
         os.path.join(base, "data/nouvelle_dataset_equilibree.csv"),
         os.path.join(base, "data/nouvelle_dataset_equilibree.csv"),
