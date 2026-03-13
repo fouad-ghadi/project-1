@@ -86,10 +86,10 @@ label {{ color: #94a3b8 !important; font-size: 0.8rem !important; }}
 def train_model():
     base = os.path.dirname(os.path.abspath(__file__))
     candidates = [
-        os.path.join(base, "nouvelle_dataset_equilibree.csv"),
-        os.path.join(base, "nouvelle_dataset_equilibrée.csv"),
-        "nouvelle_dataset_equilibree.csv",
-        "nouvelle_dataset_equilibrée.csv",
+        os.path.join(base, "data/nouvelle_dataset_equilibree.csv"),
+        os.path.join(base, "data/nouvelle_dataset_equilibree.csv"),
+        "data/nouvelle_dataset_equilibree.csv",
+        "data/nouvelle_dataset_equilibree.csv",
     ]
     data = None
     for path in candidates:
