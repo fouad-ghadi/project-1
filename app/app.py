@@ -80,9 +80,6 @@ label {{ color: #94a3b8 !important; font-size: 0.8rem !important; }}
 </style>
 """, unsafe_allow_html=True)
 
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_PATH = os.path.join(BASE_DIR, "data", "nouvelle_dataset_equilibree.csv")
 # ── Train model ─────────────────────────────────────────────────────────────────
 @st.cache_resource
 def train_model():
